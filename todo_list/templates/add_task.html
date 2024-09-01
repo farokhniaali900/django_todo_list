@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add Task</h1><br>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button action="submit">Add</button>
+</form>
+<a href="{% url 'task_list' %}">back to task list</a>
+{% endblock %}

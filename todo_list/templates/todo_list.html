@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for task in tasks %}
+    <div class="task-item {% if task.done %}done{% endif %}">
+        <div class="task-details">
+            <h3>{{ task.pk }} - {{ task.title }}</h3>
+            <p>{{ task.task }}</p>
+        </div>
+        <div class="status">
+            <a href="{% url 'delete_task' task.pk %}">Delete</a>
+            {% if task.done is True %}
+                <a href="{% url 'un_do_task' task.pk %}">Un Do</a>
+                ✔ 
+            {% else %}
+                <a href="{% url 'task_done' task.pk %}">Done!</a>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
